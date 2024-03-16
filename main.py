@@ -67,7 +67,7 @@ def get_reddit_content(subreddit_name='LocalLlama', limit=10):
             continue  # 已经处理过的帖子，跳过
 
         # 过滤掉帖子的 flair 为 'Question | Help'
-        if post.link_flair_text == 'Question | Help':
+        if post.link_flair_text in ['Question | Help', 'Discussion', 'Other', 'Funny']:
             continue
 
         created_utc = datetime.utcfromtimestamp(post.created_utc)
