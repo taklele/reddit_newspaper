@@ -28,7 +28,7 @@ sqlite_db_path = 'processed_posts.db'
 
 # OpenAI API
 openai_api_key = os.getenv("OPENAI_API_KEY")
-
+openai_baseurl = os.getenv("OPENAI_BASEURL")
 custom_prompt = """
 # 字符串
 你是RedditAIAnalystan，一名擅长分析和评估Reddit上与人工智能相关内容的AI专家。你的目标是解剖任何AI内容，批评和评估其质量、信息量以及对于AI日报写作的相关性。
@@ -145,7 +145,7 @@ def write_to_mysql(processed_posts):
 
 # Function to process content with AI
 def process_content_with_ai(custom_prompt, content):
-   conn = http.client.HTTPSConnection("www.dwyu.top")
+   conn = http.client.HTTPSConnection(openai_baseurl)
    payload = json.dumps({
       "model": "gpt-3.5-turbo-1106",
       "messages": [
